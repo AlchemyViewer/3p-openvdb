@@ -1,0 +1,34 @@
+diff --git a/openvdb/openvdb/CMakeLists.txt b/openvdb/openvdb/CMakeLists.txt
+index 88d9ee06..4a6ddc9d 100644
+--- a/openvdb/openvdb/CMakeLists.txt
++++ b/openvdb/openvdb/CMakeLists.txt
+@@ -129,13 +129,22 @@ if(OPENVDB_USE_DELAYED_LOADING)
+   endif()
+ endif()
+ 
+-find_package(TBB ${MINIMUM_TBB_VERSION} REQUIRED COMPONENTS tbb)
+-if(OPENVDB_FUTURE_DEPRECATION AND FUTURE_MINIMUM_TBB_VERSION)
+-  if(${TBB_VERSION} VERSION_LESS FUTURE_MINIMUM_TBB_VERSION)
+-    message(DEPRECATION "Support for TBB versions < ${FUTURE_MINIMUM_TBB_VERSION} "
+-      "is deprecated and will be removed.")
+-  endif()
+-endif()
++find_library(TBB_LIBRARY
++    NAMES
++    tbb12.lib
++    tbb12_debug.lib
++    PATHS "${PREBUILT_LIB_DIR}" REQUIRED NO_DEFAULT_PATH)
++add_library( TBB::tbb INTERFACE IMPORTED )
++target_link_libraries(TBB::tbb INTERFACE ${TBB_LIBRARY})
++target_include_directories( TBB::tbb SYSTEM INTERFACE ${PREBUILT_INCLUDE_DIR})
++
++# find_package(TBB ${MINIMUM_TBB_VERSION} REQUIRED COMPONENTS tbb)
++# if(OPENVDB_FUTURE_DEPRECATION AND FUTURE_MINIMUM_TBB_VERSION)
++#   if(${TBB_VERSION} VERSION_LESS FUTURE_MINIMUM_TBB_VERSION)
++#     message(DEPRECATION "Support for TBB versions < ${FUTURE_MINIMUM_TBB_VERSION} "
++#       "is deprecated and will be removed.")
++#   endif()
++# endif()
+ 
+ if(USE_IMATH_HALF)
+   find_package(Imath ${MINIMUM_IMATH_VERSION} REQUIRED CONFIG)
