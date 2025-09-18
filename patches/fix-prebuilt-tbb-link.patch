@@ -1,8 +1,8 @@
 diff --git a/openvdb/openvdb/CMakeLists.txt b/openvdb/openvdb/CMakeLists.txt
-index 88d9ee06..4a6ddc9d 100644
+index 88d9ee06..73da08e2 100644
 --- a/openvdb/openvdb/CMakeLists.txt
 +++ b/openvdb/openvdb/CMakeLists.txt
-@@ -129,13 +129,22 @@ if(OPENVDB_USE_DELAYED_LOADING)
+@@ -129,13 +129,24 @@ if(OPENVDB_USE_DELAYED_LOADING)
    endif()
  endif()
  
@@ -17,6 +17,8 @@ index 88d9ee06..4a6ddc9d 100644
 +    NAMES
 +    tbb12.lib
 +    tbb12_debug.lib
++    libtbb.so
++    libtbb.dylib
 +    PATHS "${PREBUILT_LIB_DIR}" REQUIRED NO_DEFAULT_PATH)
 +add_library( TBB::tbb INTERFACE IMPORTED )
 +target_link_libraries(TBB::tbb INTERFACE ${TBB_LIBRARY})

@@ -121,7 +121,9 @@ pushd "$OPENVDB_SOURCE_DIR"
                         -DOPENVDB_BUILD_BINARIES=OFF \
                         -DOPENVDB_USE_DELAYED_LOADING=OFF \
                         -DUSE_BLOSC=OFF \
-                        -DUSE_ZLIB=OFF
+                        -DUSE_ZLIB=OFF \
+                        -DPREBUILT_LIB_DIR="$stage/packages/lib/release" \
+                        -DPREBUILT_INCLUDE_DIR="$stage/packages/include"
 
                     cmake --build . --config Release --parallel $AUTOBUILD_CPU_COUNT
                     cmake --install . --config Release
@@ -154,9 +156,11 @@ pushd "$OPENVDB_SOURCE_DIR"
                     -DOPENVDB_BUILD_BINARIES=OFF \
                     -DOPENVDB_USE_DELAYED_LOADING=OFF \
                     -DUSE_BLOSC=OFF \
-                    -DUSE_ZLIB=OFF
+                    -DUSE_ZLIB=OFF \
+                    -DPREBUILT_LIB_DIR="$stage/packages/lib/release" \
+                    -DPREBUILT_INCLUDE_DIR="$stage/packages/include"
 
-                cmake --build . --config Release
+                cmake --build . --config Release --parallel $AUTOBUILD_CPU_COUNT
                 cmake --install . --config Release
 
                 # conditionally run unit tests
