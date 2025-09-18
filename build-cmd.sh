@@ -41,6 +41,7 @@ pushd "$OPENVDB_SOURCE_DIR"
 
                 cmake -G "$AUTOBUILD_WIN_CMAKE_GEN" -A "$AUTOBUILD_WIN_VSPLATFORM" .. \
                         -DCONCURRENT_MALLOC=None \
+                        -DOPENVDB_CORE_SHARED=OFF \
                         -DOPENVDB_BUILD_BINARIES=OFF \
                         -DOPENVDB_USE_DELAYED_LOADING=OFF \
                         -DUSE_BLOSC=OFF \
@@ -72,6 +73,7 @@ pushd "$OPENVDB_SOURCE_DIR"
 
                 cmake -G "$AUTOBUILD_WIN_CMAKE_GEN" -A "$AUTOBUILD_WIN_VSPLATFORM" .. \
                         -DCONCURRENT_MALLOC=None \
+                        -DOPENVDB_CORE_SHARED=OFF \
                         -DOPENVDB_BUILD_BINARIES=OFF \
                         -DOPENVDB_USE_DELAYED_LOADING=OFF \
                         -DUSE_BLOSC=OFF \
@@ -120,6 +122,7 @@ pushd "$OPENVDB_SOURCE_DIR"
                         -DCMAKE_OSX_ARCHITECTURES="$arch" \
                         -DCMAKE_OSX_DEPLOYMENT_TARGET=${MACOSX_DEPLOYMENT_TARGET} \
                         -DCONCURRENT_MALLOC=None \
+                        -DOPENVDB_CORE_SHARED=OFF \
                         -DOPENVDB_BUILD_BINARIES=OFF \
                         -DOPENVDB_USE_DELAYED_LOADING=OFF \
                         -DUSE_BLOSC=OFF \
@@ -155,6 +158,7 @@ pushd "$OPENVDB_SOURCE_DIR"
                     -DCMAKE_INSTALL_PREFIX="$stage" \
                     -DCMAKE_INSTALL_LIBDIR="$stage/lib/release" \
                     -DCONCURRENT_MALLOC=None \
+                    -DOPENVDB_CORE_SHARED=OFF \
                     -DOPENVDB_BUILD_BINARIES=OFF \
                     -DOPENVDB_USE_DELAYED_LOADING=OFF \
                     -DUSE_BLOSC=OFF \
