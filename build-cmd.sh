@@ -51,6 +51,7 @@ pushd "$OPENVDB_SOURCE_DIR"
                         -DCMAKE_C_FLAGS_DEBUG="$plainopts" \
                         -DCMAKE_CXX_FLAGS_DEBUG="$opts /EHsc" \
                         -DCMAKE_MSVC_DEBUG_INFORMATION_FORMAT="Embedded" \
+                        -DCMAKE_MSVC_RUNTIME_LIBRARY="MultiThreadedDebugDLL" \
                         -DCMAKE_INSTALL_PREFIX="$(cygpath -m $stage)" \
                         -DCMAKE_INSTALL_LIBDIR="$(cygpath -m "$stage/lib/debug")" \
                         -DCMAKE_INSTALL_BINDIR="$(cygpath -m "$stage/lib/debug")"
@@ -81,6 +82,7 @@ pushd "$OPENVDB_SOURCE_DIR"
                         -DCMAKE_C_FLAGS="$plainopts" \
                         -DCMAKE_CXX_FLAGS="$opts /EHsc" \
                         -DCMAKE_MSVC_DEBUG_INFORMATION_FORMAT="Embedded" \
+                        -DCMAKE_MSVC_RUNTIME_LIBRARY="MultiThreadedDLL" \
                         -DCMAKE_INSTALL_PREFIX="$(cygpath -m $stage)" \
                         -DCMAKE_INSTALL_LIBDIR="$(cygpath -m "$stage/lib/release")" \
                         -DCMAKE_INSTALL_BINDIR="$(cygpath -m "$stage/lib/release")"
